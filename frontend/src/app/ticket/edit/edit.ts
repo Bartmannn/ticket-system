@@ -3,19 +3,22 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TicketService } from '../ticket-service';
 import { Ticket } from '../ticket';
+import { StateManager } from '../state-manager';
 
 @Component({
   selector: 'app-edit',
   imports: [RouterLink, FormsModule],
   templateUrl: './edit.html',
-  styleUrl: './edit.css'
+  styleUrl: './edit.css',
 })
 export class Edit {
-  id = "";
-  title = "";
-  description = "";
+  id = '';
+  title = '';
+  description = '';
   done = false;
-  error = "";
+  error = '';
+  
+  state: StateManager = new StateManager();
 
   constructor(
     private ticketService: TicketService,
@@ -24,17 +27,24 @@ export class Edit {
   ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params["ticketId"]
-    this.ticketService.findTicket(this.id).subscribe((ticket: Ticket) => {
-      this.title = ticket.title;
-      this.description = ticket.description;
-      this.done = ticket.done;
+    this.state.loading();
+    this.id = this.route.snapshot.params['ticketId'];
+    this.ticketService.findTicket(this.id).subscribe({
+      next: (ticket: Ticket) => {
+        this.title = ticket.title;
+        this.description = ticket.description;
+        this.done = ticket.done;
+        this.state.setSuccess();
+      },
+      error: () => {
+        this.state.setError();
+      },
     });
   }
 
   submit() {
-    if ( !this.title || !this.description ) {
-      this.error = "Tytuł i opis są wymagane!";
+    if (!this.title || !this.description) {
+      this.error = 'Tytuł i opis są wymagane!';
       return;
     }
 
@@ -49,5 +59,4 @@ export class Edit {
     this.ticketService.updateTicket(this.id, input).subscribe();
     this.router.navigate(['']);
   }
-
 }

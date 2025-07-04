@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TicketService } from '../ticket-service';
 import { Ticket } from '../ticket';
+import { StateManager } from '../state-manager';
 
 @Component({
   selector: 'app-details',
@@ -11,25 +12,34 @@ import { Ticket } from '../ticket';
 })
 export class Details {
   id = 0;
-  title = "";
-  description = "";
+  title = '';
+  description = '';
   done = false;
   time = 0;
+
+  state: StateManager = new StateManager();
 
   constructor(
     private ticketService: TicketService,
     private route: ActivatedRoute,
-    private router : Router,
   ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params["ticketId"];
-    this.ticketService.findTicket(`${this.id}`).subscribe((ticket: Ticket) => {
-      this.title = ticket.title;
-      this.description = ticket.description;
-      this.done = ticket.done;
-      this.time = ticket.published_date;
+    this.state.loading();
+    this.id = this.route.snapshot.params['ticketId'];
+
+    this.ticketService.findTicket(`${this.id}`).subscribe({
+      next: (ticket: Ticket) => {
+        this.title = ticket.title;
+        this.description = ticket.description;
+        this.done = ticket.done;
+        this.time = ticket.published_date;
+
+        this.state.setSuccess();
+      },
+      error: () => {
+        this.state.setError();
+      },
     });
   }
-
 }

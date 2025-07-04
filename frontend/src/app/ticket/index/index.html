@@ -1,19 +1,37 @@
-<h3>Mini system zgłoszeń</h3>
+<div class="card mt-5">
+  <h3 class="card-header p-3">System zgłoszeń</h3>
+  <div class="card-body">
+    <table class="table table-bordered table-stripped">
+      <thead>
+        <tr>
+          <th>Tytuł</th>
+          <th>Opis</th>
+          <th width="250px">Opcje</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (state.isLoading()) {
+          <tr>Ładowanie ...</tr>
+        }
+        @else if (state.isSuccess()) {
+          @for (ticket of tickets; track ticket.id) {
+            <tr>
+              <td>{{ticket.title}}</td>
+              <td>{{ticket.description}}</td>
+              <td>
+                <a [routerLink]="[ticket.id, 'details']" class="btn btn-info btn-sm m-1">Szczegóły</a>
+                <a [routerLink]="['', ticket.id]" class="btn btn-warning btn-sm m-1">Edytuj</a>
+                <button (click)="deleteTicket(ticket.id)" class="btn btn-danger btn-sm m-1">Usuń</button>
+              </td>
+            </tr>
+          }
+        }
+        @else {
+          <tr>Błąd ładowania.</tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<ul>
-    @for (ticket of tickets; track ticket.id) {
-        <li> 
-            @if (ticket.done) {
-                <s> {{ ticket.title }} </s>
-            } @else {
-                {{ ticket.title }}
-            }
-            <a [routerLink]="[ticket.id, 'details']">Szczegóły</a>
-            <a [routerLink]="['', ticket.id]">Edytuj</a>
-            <button (click)="deleteTicket(ticket.id)">Usuń</button>
-        </li>
-    }
-</ul>
-
-<a [routerLink]="['create']">Nowe zgłoszenie</a>
-
+<a [routerLink]="['create']" class="btn btn-primary m-3">Nowe zgłoszenie</a>

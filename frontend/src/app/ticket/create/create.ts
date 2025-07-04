@@ -7,14 +7,13 @@ import { TicketService } from '../ticket-service';
   selector: 'app-create',
   imports: [RouterModule, FormsModule],
   templateUrl: './create.html',
-  styleUrl: './create.css'
+  styleUrl: './create.css',
 })
-
 export class Create {
-  title = "";
-  description = "";
+  title = '';
+  description = '';
 
-  error = "";
+  error = '';
 
   constructor(
     private ticketService: TicketService,
@@ -22,8 +21,8 @@ export class Create {
   ) {}
 
   submit() {
-    if ( !this.title || !this.description ) {
-      this.error = "Tytuł i opis są wymagane!";
+    if (!this.title || !this.description) {
+      this.error = 'Tytuł i opis są wymagane!';
       return;
     }
 
@@ -36,7 +35,6 @@ export class Create {
     };
 
     this.ticketService.createTicket(input).subscribe();
-    this.router.navigate([""]);
+    this.router.navigate(['']);
   }
-
 }
