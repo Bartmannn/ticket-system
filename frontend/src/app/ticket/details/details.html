@@ -1,0 +1,10 @@
+<a [routerLink]="['']">Cofnij</a>
+
+<h3>Szczegóły zgłoszenia:</h3>
+<ul>
+    <li>ID: {{ id }}</li>
+    <li>Tytuł: {{ title }}</li>
+    <li>Opis: {{ description }} </li>
+    <li>Status zadania: @if (done) {wykonany} @else {w trakcie realizacji}</li>
+    <li>Czas dodania: {{ time }}</li>
+</ul>

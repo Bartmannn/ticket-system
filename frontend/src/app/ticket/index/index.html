@@ -1,0 +1,19 @@
+<h3>Mini system zgłoszeń</h3>
+
+<ul>
+    @for (ticket of tickets; track ticket.id) {
+        <li> 
+            @if (ticket.done) {
+                <s> {{ ticket.title }} </s>
+            } @else {
+                {{ ticket.title }}
+            }
+            <a [routerLink]="[ticket.id, 'details']">Szczegóły</a>
+            <a [routerLink]="['', ticket.id]">Edytuj</a>
+            <button (click)="deleteTicket(ticket.id)">Usuń</button>
+        </li>
+    }
+</ul>
+
+<a [routerLink]="['create']">Nowe zgłoszenie</a>
+

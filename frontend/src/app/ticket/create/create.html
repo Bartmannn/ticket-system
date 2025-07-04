@@ -1,0 +1,15 @@
+<a [routerLink]="['']"> Cofnij </a>
+
+<form (ngSubmit)="submit()">
+    <label for="title">Tytuł:</label>
+    <input [(ngModel)]="title" type="text" name="title" id="title">
+    <label for="description">Opis:</label>
+    <textarea [(ngModel)]="description" name="description" id="description"></textarea>
+
+    @if ( error ) {
+        <span>{{ error }}</span>
+    }
+
+    <button>Submit</button>
+
+</form>
