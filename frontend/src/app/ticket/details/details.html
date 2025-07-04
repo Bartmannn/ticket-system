@@ -2,29 +2,23 @@
   <h3 class="card-header p-3">Szczegóły</h3>
   <div class="card-body">
     <div class="m-1">
-      <a 
-        [routerLink]="['']"
-        class="btn btn-primary btn-sm"
-      >
-        Cofnij
-      </a>
+      <a [routerLink]="['']" class="btn btn-primary btn-sm"> Cofnij </a>
     </div>
     @if (state.isLoading()) {
       <p>Ładowanie ...</p>
     } @else if (state.isSuccess()) {
       <ul class="list-group">
-        <li class="list-group-item">Id: {{id}}</li>
-        <li class="list-group-item">Tytuł: {{title}}</li>
-        <li class="list-group-item">Opis: {{description}}</li>
+        <li class="list-group-item">Id: {{ id }}</li>
+        <li class="list-group-item">Tytuł: {{ title }}</li>
+        <li class="list-group-item">Opis: {{ description }}</li>
         @if (done) {
           <li class="list-group-item">Status: w trakcie realizacji</li>
         } @else {
           <li class="list-group-item">Status: ukończono</li>
         }
-        <li class="list-group-item">Czas dodania: {{time}}</li>
+        <li class="list-group-item">Czas dodania: {{ time }}</li>
       </ul>
-    }
-    @else {
+    } @else {
       <p>Błąd ładowania.</p>
     }
   </div>

@@ -17,7 +17,7 @@ export class Edit {
   description = '';
   done = false;
   error = '';
-  
+
   state: StateManager = new StateManager();
 
   constructor(

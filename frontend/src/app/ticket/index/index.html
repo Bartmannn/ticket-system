@@ -11,23 +11,38 @@
       </thead>
       <tbody>
         @if (state.isLoading()) {
-          <tr>Ładowanie ...</tr>
-        }
-        @else if (state.isSuccess()) {
+          <tr>
+            Ładowanie ...
+          </tr>
+        } @else if (state.isSuccess()) {
           @for (ticket of tickets; track ticket.id) {
             <tr>
-              <td>{{ticket.title}}</td>
-              <td>{{ticket.description}}</td>
+              <td>{{ ticket.title }}</td>
+              <td>{{ ticket.description }}</td>
               <td>
-                <a [routerLink]="[ticket.id, 'details']" class="btn btn-info btn-sm m-1">Szczegóły</a>
-                <a [routerLink]="['', ticket.id]" class="btn btn-warning btn-sm m-1">Edytuj</a>
-                <button (click)="deleteTicket(ticket.id)" class="btn btn-danger btn-sm m-1">Usuń</button>
+                <a
+                  [routerLink]="[ticket.id, 'details']"
+                  class="btn btn-info btn-sm m-1"
+                  >Szczegóły</a
+                >
+                <a
+                  [routerLink]="['', ticket.id]"
+                  class="btn btn-warning btn-sm m-1"
+                  >Edytuj</a
+                >
+                <button
+                  (click)="deleteTicket(ticket.id)"
+                  class="btn btn-danger btn-sm m-1"
+                >
+                  Usuń
+                </button>
               </td>
             </tr>
           }
-        }
-        @else {
-          <tr>Błąd ładowania.</tr>
+        } @else {
+          <tr>
+            Błąd ładowania.
+          </tr>
         }
       </tbody>
     </table>

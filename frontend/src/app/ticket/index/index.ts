@@ -14,9 +14,7 @@ export class Index {
   tickets: Ticket[] = [];
   state: StateManager = new StateManager();
 
-  constructor(
-    private ticketService: TicketService,
-  ) {}
+  constructor(private ticketService: TicketService) {}
 
   ngOnInit(): void {
     this.state.loading();

@@ -2,27 +2,33 @@
   <h3 class="card-header p-3">Edytowanie</h3>
   <div class="card-body">
     <div class="m-1">
-      <a 
-        [routerLink]="['']"
-        class="btn btn-primary btn-sm"
-      >
-        Cofnij
-      </a>
+      <a [routerLink]="['']" class="btn btn-primary btn-sm"> Cofnij </a>
     </div>
     @if (state.isLoading()) {
       <p>Ładowanie ...</p>
-    }
-    @else if (state.isSuccess()) {
+    } @else if (state.isSuccess()) {
       <form (ngSubmit)="submit()">
         <div class="mt-2">
           <label for="title">Title:</label>
-          <input [(ngModel)]="title" type="text" name="title" id="title" class="form-control">
+          <input
+            [(ngModel)]="title"
+            type="text"
+            name="title"
+            id="title"
+            class="form-control"
+          />
         </div>
         <div class="mt-2">
           <label for="description">Description:</label>
-          <textarea [(ngModel)]="description" type="text" name="description" id="description" class="form-control"></textarea>
+          <textarea
+            [(ngModel)]="description"
+            type="text"
+            name="description"
+            id="description"
+            class="form-control"
+          ></textarea>
         </div>
-        @if ( error ) {
+        @if (error) {
           <div>
             <span class="text-danger">{{ error }}</span>
           </div>
@@ -31,8 +37,7 @@
           <button class="btn btn-success">Submit</button>
         </div>
       </form>
-    }
-    @else {
+    } @else {
       <p>Błąd ładowania.</p>
     }
   </div>

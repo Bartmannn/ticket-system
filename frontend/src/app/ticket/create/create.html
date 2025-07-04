@@ -2,38 +2,42 @@
   <h3 class="card-header p-3">Tworzenie</h3>
   <div class="card-body">
     <div class="m-1">
-      <a 
-        [routerLink]="['']"
-        class="btn btn-primary btn-sm"
-      >
-        Cofnij
-      </a>
+      <a [routerLink]="['']" class="btn btn-primary btn-sm"> Cofnij </a>
     </div>
     <form (ngSubmit)="submit()">
       <div class="mt-2">
-          <label for="title">Tytuł:</label>
-          <input [(ngModel)]="title" type="text" name="title" id="title" class="form-control">
+        <label for="title">Tytuł:</label>
+        <input
+          [(ngModel)]="title"
+          type="text"
+          name="title"
+          id="title"
+          class="form-control"
+        />
       </div>
       <div class="mt-2">
-          <label for="description">Opis:</label>
-          <textarea [(ngModel)]="description" type="text" name="description" id="description" class="form-control"></textarea>
+        <label for="description">Opis:</label>
+        <textarea
+          [(ngModel)]="description"
+          type="text"
+          name="description"
+          id="description"
+          class="form-control"
+        ></textarea>
       </div>
 
-      @if ( error ) {
-            <div>
-                <span class="text-danger">{{ error }}</span>
-            </div>
-        }
-
-        <div class="mt-2">
-            <button class="btn btn-success">Dodaj</button>
+      @if (error) {
+        <div>
+          <span class="text-danger">{{ error }}</span>
         </div>
+      }
 
+      <div class="mt-2">
+        <button class="btn btn-success">Dodaj</button>
+      </div>
     </form>
-
   </div>
 </div>
-
 
 <!-- <a [routerLink]="['']"> Cofnij </a>
 
