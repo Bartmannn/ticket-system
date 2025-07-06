@@ -1,3 +1,25 @@
+/**
+ * StateManager
+ * ------------
+ * Utility class for managing loading states in Angular components.
+ * Allows tracking and updating the current state: 'idle', 'loading', 'success', or 'error'.
+ *
+ * Usage example:
+ *   const state = new StateManager();
+ *   state.loading();      // sets state to 'loading'
+ *   state.setSuccess();   // sets state to 'success' (only if currently 'loading')
+ *   state.setError();     // sets state to 'error'
+ *   state.isLoading();    // returns true if state is 'loading'
+ *   state.isSuccess();    // returns true if state is 'success'
+ *   state.isError();      // returns true if state is 'error'
+ *
+ * LoadState type:
+ *   'idle'    - initial state, no activity
+ *   'loading' - data is being loaded
+ *   'success' - data loaded successfully
+ *   'error'   - an error occurred during loading
+ */
+
 export type LoadState = 'idle' | 'loading' | 'success' | 'error';
 
 export class StateManager {

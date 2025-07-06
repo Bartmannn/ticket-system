@@ -1,3 +1,28 @@
+/**
+ * TicketService
+ * --------------
+ * Angular service for handling tickets via REST API.
+ * Provides methods to fetch, create, retrieve, update, and delete tickets.
+ * Requires authorization via a token in the HTTP header.
+ *
+ * API Endpoint: http://localhost:8000/api/tickets/
+ *
+ * Methods:
+ * - getTickets(): Observable<Ticket[]>
+ *      Fetches a list of all tickets.
+ * - createTicket(data: Ticket): Observable<Ticket>
+ *      Creates a new ticket.
+ * - findTicket(id: string): Observable<Ticket>
+ *      Retrieves details of a ticket by its ID.
+ * - updateTicket(id: string, data: Ticket): Observable<Ticket>
+ *      Updates a ticket by its ID.
+ * - deleteTicket(id: number): Observable<any>
+ *      Deletes a ticket by its ID.
+ *
+ * All methods automatically include the authorization header:
+ *      Authorization: Token simple_secret_token
+ */
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

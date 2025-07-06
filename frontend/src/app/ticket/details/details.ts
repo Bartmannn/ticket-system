@@ -1,3 +1,22 @@
+/**
+ * Details Component
+ * -----------------
+ * Angular component for displaying the details of a single ticket.
+ *
+ * Features:
+ * - Loads ticket data by ID from the route on initialization.
+ * - Uses StateManager to track loading, success, and error states for UI feedback.
+ * - Displays ticket title, description, status, and published date.
+ *
+ * Dependencies:
+ * - TicketService: Handles API requests for tickets.
+ * - StateManager: Manages loading states.
+ * - ActivatedRoute: Retrieves route parameters.
+ *
+ * Template: ./details.html
+ * Styles:   ./details.css
+ */
+
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TicketService } from '../ticket-service';

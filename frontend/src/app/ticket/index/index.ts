@@ -1,3 +1,21 @@
+/**
+ * Index Component
+ * ---------------
+ * Angular component responsible for displaying the list of tickets and handling ticket deletion.
+ *
+ * Features:
+ * - Fetches and displays all tickets on initialization.
+ * - Uses StateManager to track loading, success, and error states for UI feedback.
+ * - Allows users to delete a ticket with confirmation; refreshes the ticket list after deletion.
+ *
+ * Dependencies:
+ * - TicketService: Handles API requests for tickets.
+ * - StateManager: Manages loading states.
+ *
+ * Template: ./index.html
+ * Styles:   ./index.css
+ */
+
 import { Component } from '@angular/core';
 import { Ticket } from '../ticket';
 import { RouterModule } from '@angular/router';

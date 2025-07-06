@@ -1,3 +1,22 @@
+/**
+ * Create Component
+ * ----------------
+ * Angular component for creating a new ticket.
+ *
+ * Features:
+ * - Provides a form for entering ticket title and description.
+ * - Validates that both title and description are provided before submitting.
+ * - Submits new ticket data to the backend using TicketService.
+ * - Navigates back to the main ticket list after successful creation.
+ *
+ * Dependencies:
+ * - TicketService: Handles API requests for tickets.
+ * - Router: Handles navigation.
+ *
+ * Template: ./create.html
+ * Styles:   ./create.css
+ */
+
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';

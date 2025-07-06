@@ -1,3 +1,25 @@
+/**
+ * Edit Component
+ * --------------
+ * Angular component for editing an existing ticket.
+ *
+ * Features:
+ * - Loads ticket data by ID from the route on initialization.
+ * - Uses StateManager to track loading, success, and error states for UI feedback.
+ * - Validates that both title and description are provided before submitting.
+ * - Submits updated ticket data to the backend using TicketService.
+ * - Navigates back to the main ticket list after a successful update.
+ *
+ * Dependencies:
+ * - TicketService: Handles API requests for tickets.
+ * - StateManager: Manages loading states.
+ * - ActivatedRoute: Retrieves route parameters.
+ * - Router: Handles navigation.
+ *
+ * Template: ./edit.html
+ * Styles:   ./edit.css
+ */
+
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
