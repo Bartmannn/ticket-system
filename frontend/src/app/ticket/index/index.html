@@ -1,11 +1,10 @@
-<div class="card mt-5">
+<div class="card mt-5" style="width: 25rem;">
   <h3 class="card-header p-3">System zgłoszeń</h3>
   <div class="card-body">
     <table class="table table-bordered table-stripped">
       <thead>
         <tr>
           <th>Tytuł</th>
-          <th>Opis</th>
           <th width="250px">Opcje</th>
         </tr>
       </thead>
@@ -16,28 +15,15 @@
           </tr>
         } @else if (state.isSuccess()) {
           @for (ticket of tickets; track ticket.id) {
-            <tr>
-              <td>{{ ticket.title }}</td>
-              <td>{{ ticket.description }}</td>
-              <td>
-                <a
-                  [routerLink]="[ticket.id, 'details']"
-                  class="btn btn-info btn-sm m-1"
-                  >Szczegóły</a
-                >
-                <a
-                  [routerLink]="['', ticket.id]"
-                  class="btn btn-warning btn-sm m-1"
-                  >Edytuj</a
-                >
-                <button
-                  (click)="deleteTicket(ticket.id)"
-                  class="btn btn-danger btn-sm m-1"
-                >
-                  Usuń
-                </button>
-              </td>
-            </tr>
+            @if (ticket.done) {
+              <tr class="table-success">
+                <ng-container *ngTemplateOutlet="task_item; context: { ticket: ticket }"></ng-container>
+              </tr>
+            } @else {
+              <tr class="table-danger">
+                <ng-container *ngTemplateOutlet="task_item; context: { ticket: ticket }"></ng-container>
+              </tr>
+            }
           }
         } @else {
           <tr>
@@ -50,3 +36,35 @@
 </div>
 
 <a [routerLink]="['create']" class="btn btn-primary m-3">Nowe zgłoszenie</a>
+
+<ng-template #task_item let-ticket="ticket">
+  <td>{{ ticket.title }}</td>
+    <td>
+      <a
+        [routerLink]="[ticket.id, 'details']"
+        class="btn btn-info btn-sm m-1"
+        >Szczegóły</a
+      >
+      <a
+        [routerLink]="['', ticket.id]"
+        class="btn btn-warning btn-sm m-1"
+        >Edytuj</a
+      >
+      @if (ticket.done) {
+        <button
+          (click)="deleteTicket(ticket.id)"
+          class="btn btn-danger btn-sm m-1"
+          disabled
+        >
+          Usuń
+        </button>
+      } @else {
+        <button
+          (click)="deleteTicket(ticket.id)"
+          class="btn btn-danger btn-sm m-1"
+        >
+          Usuń
+        </button>
+      }
+    </td>
+</ng-template>

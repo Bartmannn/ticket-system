@@ -28,6 +28,16 @@
             class="form-control"
           ></textarea>
         </div>
+        <div class="form-check mt-2">
+          <label class="form-check-label" for="done">Done</label>
+          <input 
+            [(ngModel)]="done"
+            type="checkbox"
+            name="done"
+            id="done"
+            class="form-check-input"
+          />
+        </div>
         @if (error) {
           <div>
             <span class="text-danger">{{ error }}</span>

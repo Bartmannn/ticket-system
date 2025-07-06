@@ -3,10 +3,11 @@ import { Ticket } from '../ticket';
 import { RouterModule } from '@angular/router';
 import { TicketService } from '../ticket-service';
 import { StateManager } from '../state-manager';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-index',
-  imports: [RouterModule],
+  imports: [RouterModule, NgTemplateOutlet],
   templateUrl: './index.html',
   styleUrl: './index.css',
 })
