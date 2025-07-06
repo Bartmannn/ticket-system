@@ -29,6 +29,17 @@ npm install
 ng serve
 ```
 
+### Docker
+
+```bash
+docker-compose build
+docker-compose up
+```
+
+Należy wejść na stronę http://localhost:4200/
+
+---
+
 Angular komunikuje się z backendem przez http://localhost:8000/api/tickets/
 Token statyczny: Token simple_secret_token
 
