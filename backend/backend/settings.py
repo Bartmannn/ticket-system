@@ -111,6 +111,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Static Authorization
+STATIC_API_TOKEN = "simple_secret_token"
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "api.authentication.StaticTokenAuthentication",
+    ],
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
